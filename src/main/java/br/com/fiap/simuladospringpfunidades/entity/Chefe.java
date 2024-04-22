@@ -17,7 +17,7 @@ import java.time.LocalDateTime;
 @Entity
 @Table(name = "TBL_2TDSPF_CHEFE",
     uniqueConstraints = {
-        @UniqueConstraint(name = "UK_",columnNames = "")
+            @UniqueConstraint(name = "UK_CHEFE_USUARIO_UNIDADE_FIM", columnNames = {"USUARIO_ID", "UNIDADE_ID", "FIM"})
 })
 public class Chefe {
     @Id
@@ -28,8 +28,34 @@ public class Chefe {
 
     private Boolean substituto;
 
+    @ManyToOne(
+            fetch = FetchType.EAGER,
+            cascade = {
+                    CascadeType.MERGE,
+                    CascadeType.PERSIST
+            })
+    @JoinColumn(
+            name = "USUARIO",
+            referencedColumnName = "ID_USUARIO",
+            foreignKey = @ForeignKey(
+                    name = "FK_CHEFE_USUARIO"
+            )
+    )
     private Usuario usuario;
 
+    @ManyToOne(
+            fetch = FetchType.EAGER,
+            cascade = {
+                    CascadeType.MERGE,
+                    CascadeType.PERSIST
+            })
+    @JoinColumn(
+            name = "UNIDADE",
+            referencedColumnName = "ID_UNIDADE",
+            foreignKey = @ForeignKey(
+                    name = "FK_CHEFE_UNIDADE"
+            )
+    )
     private Unidade unidade;
 
     private LocalDateTime inicio;
