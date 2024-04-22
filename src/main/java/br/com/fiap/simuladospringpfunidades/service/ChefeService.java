@@ -1,0 +1,55 @@
+package br.com.fiap.simuladospringpfunidades.service;
+
+import br.com.fiap.simuladospringpfunidades.entity.Chefe;
+import br.com.fiap.simuladospringpfunidades.repository.ChefeRepository;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Example;
+
+import java.util.List;
+
+public class ChefeService implements ServiceDTO<Chefe, ChefeRequest, ChefeResponse> {
+
+    @Autowired
+    private ChefeRepository repo;
+
+    @Override
+    public Chefe toEntity(ChefeRequest r) {
+        return Chefe.builder()
+                .substituto(r.substituto() )
+                .usuario(r.usuario() )
+                .unidade(r.unidade() )
+                .inicio(r.inicio())
+                .fim(r.fim())
+                .build();
+    }
+    @Override
+    public ChefeResponse toResponse(Chefe e) {
+        return ChefeResponse.builder()
+                .id(e.getId() )
+                .substituto(e.getSubstituto() )
+                .usuario(e.getUsuario() )
+                .unidade(e.getUnidade() )
+                .inicio(e.getInicio())
+                .fim(e.getFim())
+                .build();
+    }
+    @Override
+    public List<Chefe> findAll() {
+        return repo.findAll();
+    }
+
+    @Override
+    public List<Chefe> findAll(Example<Chefe> example) {
+        return repo.findAll( example );
+    }
+
+    @Override
+    public Chefe findById(Long id){
+        return repo.findById( id ).orElseThrow(null);
+    }
+
+    @Override
+    public Chefe save(Chefe e) {
+        return repo.save( e );
+    }
+}
