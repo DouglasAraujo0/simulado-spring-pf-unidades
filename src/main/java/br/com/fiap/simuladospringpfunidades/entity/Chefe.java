@@ -1,6 +1,7 @@
 package br.com.fiap.simuladospringpfunidades.entity;
 
 
+import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -13,9 +14,13 @@ import java.time.LocalDateTime;
 @AllArgsConstructor
 @Builder
 
-
+@Entity
+@Table(name = "TBL_2TDSPF_CHEFE")
 public class Chefe {
-
+    @Id
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "SQ_CHEFE")
+    @SequenceGenerator(name = "SQ_CHEFE", sequenceName = "SQ_CHEFE", allocationSize = 1)
+    @Column(name = "ID_CHEFE")
     private Long id;
 
     private Boolean substituto;
