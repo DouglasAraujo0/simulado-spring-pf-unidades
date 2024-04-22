@@ -12,6 +12,10 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @Builder
 
+@Entity
+@Table(name = "TBL_2TDSPF_UNIDADE", uniqueConstraints = {
+        @UniqueConstraint(name = "UK_", columnNames = "")
+})
 public class Unidade {
 
     @Id

@@ -15,7 +15,10 @@ import java.time.LocalDateTime;
 @Builder
 
 @Entity
-@Table(name = "TBL_2TDSPF_CHEFE")
+@Table(name = "TBL_2TDSPF_CHEFE",
+    uniqueConstraints = {
+        @UniqueConstraint(name = "UK_",columnNames = "")
+})
 public class Chefe {
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "SQ_CHEFE")

@@ -6,6 +6,9 @@ import lombok.Getter;
 
 @Getter
 @AllArgsConstructor
+
+@Entity
+@Table(name = "TBL_2TDSPF_TIPO")
 public enum Tipo {
 
     PF( 1L, "Pessoa Física", "PF" ), PJ( 2L, "Pessoa Jurídica", "PJ" );
@@ -15,7 +18,11 @@ public enum Tipo {
     @SequenceGenerator(name = "SQ_TIPO", sequenceName = "SQ_TIPO", allocationSize = 1)
     @Column(name = "ID_TIPO")
     private Long id;
+
+    @Column(name = "NM_TIPO")
     private String nome;
+
+    @Column(name = "SIGLA_TIPO")
     private String sigla;
 
     @Override
