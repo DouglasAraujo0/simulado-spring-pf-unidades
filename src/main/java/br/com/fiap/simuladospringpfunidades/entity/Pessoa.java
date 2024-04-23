@@ -40,7 +40,7 @@ public class Pessoa {
     private LocalDate nascimento;
 
     @Enumerated(EnumType.STRING)
-    @Column(name = "TP_PESSOA", nullable = false)
+    @Column(name = "TIPO_PESSOA", nullable = false)
     private Tipo tipo;
 
 }
