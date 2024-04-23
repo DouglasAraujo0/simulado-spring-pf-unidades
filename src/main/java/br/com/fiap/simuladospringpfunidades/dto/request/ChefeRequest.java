@@ -3,6 +3,8 @@ package br.com.fiap.simuladospringpfunidades.dto.request;
 import jakarta.validation.Valid;
 import jakarta.validation.constraints.NotNull;
 
+import java.time.LocalDateTime;
+
 public record ChefeRequest(
 
 
@@ -12,13 +14,11 @@ public record ChefeRequest(
         @NotNull(message = "A unidade deve ser informada")
         AbstractRequest unidade,
 
-        @Valid
         @NotNull(message = "O inicio deve ser informado")
-        AbstractRequest inicio,
+        LocalDateTime inicio,
 
-        @Valid
         @NotNull(message = "O fim deve ser informado")
-        AbstractRequest fim,
+        LocalDateTime fim,
 
         @Valid
         @NotNull(message = "O usuário deve ser informado")
