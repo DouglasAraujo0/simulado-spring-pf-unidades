@@ -17,7 +17,7 @@ import java.time.LocalDate;
 @Entity
 @Table(name = "TBL_2TDSPF_PESSOA",
         uniqueConstraints = {
-        @UniqueConstraint(name = "UK_EMAIL_PESSOA", columnNames = "EMAIL")
+        @UniqueConstraint(name = "UK_EMAIL_PESSOA", columnNames = {"EMAIL"})
         })
 public class Pessoa {
 
