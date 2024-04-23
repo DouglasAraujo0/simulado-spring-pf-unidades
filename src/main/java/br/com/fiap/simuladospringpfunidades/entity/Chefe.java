@@ -17,7 +17,7 @@ import java.time.LocalDateTime;
 @Entity
 @Table(name = "TBL_2TDSPF_CHEFE",
     uniqueConstraints = {
-            @UniqueConstraint(name = "UK_CHEFE_USUARIO_UNIDADE_FIM", columnNames = {"USUARIO_ID", "UNIDADE_ID", "FIM"})
+            @UniqueConstraint(name = "UK_CHEFE_USUARIO_UNIDADE_FIM", columnNames = {"USUARIO_ID", "UNIDADE_ID", "FIM_CHEFE"})
 })
 public class Chefe {
     @Id
@@ -58,8 +58,10 @@ public class Chefe {
     )
     private Unidade unidade;
 
+    @Column(name = "INICIO_CHEFE")
     private LocalDateTime inicio;
 
+    @Column(name = "FIM_CHEFE")
     private LocalDateTime fim;
 
 }

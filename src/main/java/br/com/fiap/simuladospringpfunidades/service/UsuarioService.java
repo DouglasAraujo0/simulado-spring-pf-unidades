@@ -1,5 +1,6 @@
 package br.com.fiap.simuladospringpfunidades.service;
 import br.com.fiap.simuladospringpfunidades.dto.request.UsuarioRequest;
+import br.com.fiap.simuladospringpfunidades.dto.response.UsuarioResponse;
 import br.com.fiap.simuladospringpfunidades.entity.Usuario;
 import br.com.fiap.simuladospringpfunidades.repository.UsuarioRepository;
 import org.springframework.beans.factory.annotation.Autowired;

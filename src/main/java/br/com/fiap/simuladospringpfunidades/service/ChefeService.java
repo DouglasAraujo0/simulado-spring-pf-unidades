@@ -1,5 +1,7 @@
 package br.com.fiap.simuladospringpfunidades.service;
 
+import br.com.fiap.simuladospringpfunidades.dto.request.ChefeRequest;
+import br.com.fiap.simuladospringpfunidades.dto.response.ChefeResponse;
 import br.com.fiap.simuladospringpfunidades.entity.Chefe;
 import br.com.fiap.simuladospringpfunidades.repository.ChefeRepository;
 import org.springframework.beans.factory.annotation.Autowired;
