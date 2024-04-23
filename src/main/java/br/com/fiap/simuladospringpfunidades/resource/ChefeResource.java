@@ -1,16 +1,20 @@
 package br.com.fiap.simuladospringpfunidades.resource;
 
+import br.com.fiap.simuladospringpfunidades.dto.request.ChefeRequest;
+import br.com.fiap.simuladospringpfunidades.dto.response.ChefeResponse;
 import br.com.fiap.simuladospringpfunidades.entity.Chefe;
 import br.com.fiap.simuladospringpfunidades.repository.ChefeRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.Collection;
+import java.util.Objects;
 
 @RestController
 @RequestMapping(value = "/chefe")
-public class ChefeResource {
+public class ChefeResource implements ResourceDTO<ChefeRequest, ChefeResponse>{
 
     @Autowired
     private ChefeRepository repo;
@@ -21,8 +25,16 @@ public class ChefeResource {
     }
 
     @GetMapping(value = "/{id}")
-    public Chefe findById(@PathVariable Long id) {
-        return repo.findById(id).orElseThrow();
+    public ResponseEntity<ChefeResponse> findById(@PathVariable Long id) {
+        Chefe chefe = repo.findById(id);
+        if (Objects.isNull(chefe)) return ResponseEntity.notFound().build();
+        var response = repo.toResponse(chefe);
+        return ResponseEntity.ok(response);
+    }
+
+    @Override
+    public ResponseEntity<ChefeResponse> save(ChefeRequest r) {
+        return null;
     }
 
     @Transactional

@@ -1,5 +1,9 @@
 package br.com.fiap.simuladospringpfunidades.resource;
 
+import br.com.fiap.simuladospringpfunidades.dto.request.ChefeRequest;
+import br.com.fiap.simuladospringpfunidades.dto.request.UsuarioRequest;
+import br.com.fiap.simuladospringpfunidades.dto.response.ChefeResponse;
+import br.com.fiap.simuladospringpfunidades.dto.response.UsuarioResponse;
 import br.com.fiap.simuladospringpfunidades.entity.Usuario;
 import br.com.fiap.simuladospringpfunidades.repository.UsuarioRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -10,7 +14,7 @@ import java.util.Collection;
 
 @RestController
 @RequestMapping(value = "/usuario")
-public class UsuarioResource {
+public class UsuarioResource implements ResourceDTO<UsuarioRequest, UsuarioResponse>{
 
     @Autowired
     private UsuarioRepository repo;

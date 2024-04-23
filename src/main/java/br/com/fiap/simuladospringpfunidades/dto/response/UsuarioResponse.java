@@ -1,4 +1,12 @@
 package br.com.fiap.simuladospringpfunidades.dto.response;
 
-public record UsuarioResponse() {
+import br.com.fiap.simuladospringpfunidades.entity.Pessoa;
+
+public record UsuarioResponse(
+
+        Long id,
+        String username,
+        String password,
+        Pessoa pessoa
+) {
 }

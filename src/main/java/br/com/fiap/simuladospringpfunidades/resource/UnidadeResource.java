@@ -1,5 +1,9 @@
 package br.com.fiap.simuladospringpfunidades.resource;
 
+import br.com.fiap.simuladospringpfunidades.dto.request.ChefeRequest;
+import br.com.fiap.simuladospringpfunidades.dto.request.UnidadeRequest;
+import br.com.fiap.simuladospringpfunidades.dto.response.ChefeResponse;
+import br.com.fiap.simuladospringpfunidades.dto.response.UnidadeResponse;
 import br.com.fiap.simuladospringpfunidades.entity.Unidade;
 import br.com.fiap.simuladospringpfunidades.repository.UnidadeRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -10,7 +14,7 @@ import java.util.Collection;
 
 @RestController
 @RequestMapping(value = "/unidade")
-public class UnidadeResource {
+public class UnidadeResource implements ResourceDTO<UnidadeRequest, UnidadeResponse>{
 
         @Autowired
         private UnidadeRepository repo;
