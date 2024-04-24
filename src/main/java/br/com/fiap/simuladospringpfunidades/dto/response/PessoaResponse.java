@@ -1,5 +1,6 @@
 package br.com.fiap.simuladospringpfunidades.dto.response;
 
+import br.com.fiap.simuladospringpfunidades.entity.Tipo;
 import java.time.LocalDate;
 
 public record PessoaResponse(
@@ -8,6 +9,7 @@ public record PessoaResponse(
         String nome,
         String sobrenome,
         String email,
-        LocalDate nascimento
+        LocalDate nascimento,
+        Tipo tipo
 ) {
 }

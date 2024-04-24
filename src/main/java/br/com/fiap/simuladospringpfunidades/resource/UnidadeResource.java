@@ -6,32 +6,35 @@ import br.com.fiap.simuladospringpfunidades.dto.response.ChefeResponse;
 import br.com.fiap.simuladospringpfunidades.dto.response.UnidadeResponse;
 import br.com.fiap.simuladospringpfunidades.entity.Unidade;
 import br.com.fiap.simuladospringpfunidades.repository.UnidadeRepository;
+import br.com.fiap.simuladospringpfunidades.service.UnidadeService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.Collection;
+import java.util.List;
 
 @RestController
 @RequestMapping(value = "/unidade")
 public class UnidadeResource implements ResourceDTO<UnidadeRequest, UnidadeResponse>{
 
-        @Autowired
-        private UnidadeRepository repo;
+    @GetMapping
+    public Collection<UnidadeResponse> findAll(
+            @RequestParam(name = "nome", required = false) String nome,
+            @RequestParam(name = "silga", required = false) String sigla,
+            @RequestParam(name = "macro", required = false) Long macroID
+    ) {
+        return List.of();
+    }
 
-        @GetMapping
-        public Collection<Unidade> findAll(){
-            return repo.findAll();
-        }
+    @Override
+    public ResponseEntity<UnidadeResponse> findById(Long id) {
+        return null;
+    }
 
-        @GetMapping(value = "/{id}")
-        public Unidade findById(@PathVariable Long id) {
-            return repo.findById(id).orElseThrow();
-        }
-
-        @Transactional
-        @PostMapping
-        public Unidade save(@RequestBody Unidade unidade) {
-            return repo.save(unidade);
-        }
+    @Override
+    public ResponseEntity<UnidadeResponse> save(UnidadeRequest r) {
+        return null;
+    }
 }

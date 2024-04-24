@@ -1,5 +1,7 @@
 package br.com.fiap.simuladospringpfunidades.dto.request;
 
+import br.com.fiap.simuladospringpfunidades.entity.Tipo;
+import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.PastOrPresent;
 import jakarta.validation.constraints.Size;
@@ -15,10 +17,14 @@ public record PessoaRequest(
         @Size(min = 3, max = 255)
         String sobrenome,
 
-        @NotNull(message = "Email inválido")
+        @NotNull(message = "Email é obrigatório")
+        @Email(message = "Email inválido")
         String email,
 
         @PastOrPresent(message = "Não pode ser data no futuro!")
-        LocalDate nascimento
+        LocalDate nascimento,
+
+        @NotNull(message = "Informe o tipo")
+        Tipo tipo
 ) {
 }

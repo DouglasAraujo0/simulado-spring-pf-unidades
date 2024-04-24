@@ -11,14 +11,14 @@ public record UnidadeRequest(
         @NotNull(message = "Nome é Obrigatório")
         String nome,
 
-        @NotNull(message = "Sigla é Obrigatória")
+        @Size(min = 3, max = 255)
         String sigla,
 
-        @NotNull(message = "Descrição é Obrigatório")
+        @Size(min = 3, max = 255)
         String descricao,
 
         @Valid
-        @NotNull(message = "O macro é campo obrigatorio")
         AbstractRequest macro
+
 ) {
 }

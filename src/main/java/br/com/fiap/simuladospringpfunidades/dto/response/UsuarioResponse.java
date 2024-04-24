@@ -6,7 +6,6 @@ public record UsuarioResponse(
 
         Long id,
         String username,
-        String password,
-        Pessoa pessoa
+        PessoaResponse pessoa
 ) {
 }

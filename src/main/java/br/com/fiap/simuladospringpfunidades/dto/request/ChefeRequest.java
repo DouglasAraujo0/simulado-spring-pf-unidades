@@ -13,6 +13,7 @@ public record ChefeRequest(
 
         Boolean substituto,
 
+        @Valid
         @NotNull(message = "Usuário é Obrigatório")
         AbstractRequest usuario,
 
@@ -20,11 +21,8 @@ public record ChefeRequest(
         @NotNull(message = "A unidade deve ser informada")
         AbstractRequest unidade,
 
-        @PastOrPresent(message = "Não pode ser data no futuro!")
-        @NotNull(message = "O inicio deve ser informado")
         LocalDateTime inicio,
 
-        @NotNull(message = "O fim deve ser informado")
         LocalDateTime fim
 ) {
 }

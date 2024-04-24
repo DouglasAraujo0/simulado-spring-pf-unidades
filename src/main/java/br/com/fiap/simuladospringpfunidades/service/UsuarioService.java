@@ -1,52 +1,58 @@
 package br.com.fiap.simuladospringpfunidades.service;
 import br.com.fiap.simuladospringpfunidades.dto.request.UsuarioRequest;
 import br.com.fiap.simuladospringpfunidades.dto.response.UsuarioResponse;
+import br.com.fiap.simuladospringpfunidades.entity.Pessoa;
 import br.com.fiap.simuladospringpfunidades.entity.Usuario;
 import br.com.fiap.simuladospringpfunidades.repository.UsuarioRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Example;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Objects;
 
+@Service
 public class UsuarioService implements ServiceDTO<Usuario, UsuarioRequest, UsuarioResponse> {
 
     @Autowired
-    private UsuarioRepository repo;
+    private PessoaService pessoaService;
 
     @Override
     public Usuario toEntity(UsuarioRequest r) {
+        Pessoa pessoa = null;
+        if (Objects.nonNull(r.pessoa().id())){
+            pessoa = pessoaService.findById(r.pessoa().id() );
+        }
+
         return Usuario.builder()
-                .username(r.username() )
-                .password(r.password() )
-                .pessoa(r.pessoa() )
+                .username(r.username())
+                .password(r.password())
+                .pessoa(pessoa)
                 .build();
     }
+
     @Override
     public UsuarioResponse toResponse(Usuario e) {
-        return UsuarioResponse.builder()
-                .id(e.getId() )
-                .username(e.getUsername() )
-                .password(e.getPassword() )
-                .pessoa(e.getPessoa() )
-                .build();
+        return null;
     }
+
     @Override
     public List<Usuario> findAll() {
-        return repo.findAll();
+        return List.of();
     }
 
     @Override
     public List<Usuario> findAll(Example<Usuario> example) {
-        return repo.findAll( example );
+        return List.of();
     }
 
     @Override
-    public Usuario findById(Long id){
-        return repo.findById( id ).orElseThrow(null);
+    public Usuario findById(Long id) {
+        return null;
     }
 
     @Override
     public Usuario save(Usuario e) {
-        return repo.save( e );
+        return null;
     }
 }

@@ -8,6 +8,6 @@ public record UnidadeResponse(
         String nome,
         String sigla,
         String descricao,
-        Unidade macro
+        UnidadeResponse macro
 ) {
 }
